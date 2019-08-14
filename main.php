@@ -3,7 +3,7 @@
 require_once "vendor/autoload.php";
 
 use PhpParser\ParserFactory;
-use lib\MyNodeVisitor;
+use lib\NodeVisitorImpl;
 
 $code = <<<EOF
 <?php
@@ -16,11 +16,11 @@ $ast = $parser->parse($code);
 var_dump($ast);
 
 $traverser = new \PhpParser\NodeTraverser();
-$traverser->addVisitor(new MyNodeVisitor());
+$traverser->addVisitor(new NodeVisitorImpl());
 $ast = $traverser->traverse($ast);
 
 var_dump($ast);
 
 $prettyPrinter = new PhpParser\PrettyPrinter\Standard();
 $code = $prettyPrinter->prettyPrintFile($ast);
-echo $code;
+echo $code . "\n";
