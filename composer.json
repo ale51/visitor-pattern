@@ -2,5 +2,10 @@
     "require": {
         "nikic/php-parser": "^4.2",
         "larapack/dd": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "lib\\": "lib/"
+        }
     }
 }
